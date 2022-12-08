@@ -1,0 +1,6 @@
+domain: dev
+layout:
+- go.kubebuilder.io/v3
+projectName: pipeline
+repo: github.com/floo-powder/pipeline
+version: "3"
