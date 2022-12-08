@@ -9,4 +9,22 @@ metadata:
     app.kubernetes.io/created-by: pipeline
   name: pipeline-sample
 spec:
-  # TODO(user): Add fields here
+  sync_type: Full
+  execute_cycle_type: Disposable
+  cron: ""
+  reader:
+    source_name: test
+    table_config:
+      name: table1
+      field_config:
+        - name: id
+          type: int
+          is_null: false
+  writer:
+    source_name: test
+    table_config:
+      name: table1
+      field_config:
+        - name: id
+          type: int
+          is_null: false

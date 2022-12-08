@@ -9,4 +9,24 @@ metadata:
     app.kubernetes.io/created-by: pipeline
   name: plugin-sample
 spec:
-  # TODO(user): Add fields here
+  kind: Mysql
+  version:
+    - "5.6"
+    - "5.7"
+    - "5.8"
+    - "8.0"
+  description: "Plugins for reading and writing mysql."
+  image: floo-powder/plugin-sample:beta
+  config:
+    - name: "username"
+      kind: "string"
+      description: "username for mysql connect"
+    - name: "password"
+      kind: "password"
+      description: "password for mysql connect"
+    - name: "database"
+      kind: "string"
+      description: "database for use"
+    - name: "useSSL"
+      kind: "bool"
+      description: "connect is using ssl?"
