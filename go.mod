@@ -6,6 +6,7 @@ require (
 	github.com/floo-powder/pkg v0.0.0-20221208055052-fc4fbe067492
 	github.com/onsi/ginkgo/v2 v2.1.6
 	github.com/onsi/gomega v1.20.1
+	k8s.io/api v0.25.4
 	k8s.io/apimachinery v0.25.4
 	k8s.io/client-go v0.25.4
 	knative.dev/pkg v0.0.0-20221206173513-f4eb77830e7e
@@ -71,7 +72,6 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.25.4 // indirect
 	k8s.io/apiextensions-apiserver v0.25.4 // indirect
 	k8s.io/component-base v0.25.4 // indirect
 	k8s.io/klog/v2 v2.80.2-0.20221028030830-9ae4992afb54 // indirect
