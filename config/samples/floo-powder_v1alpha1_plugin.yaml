@@ -1,0 +1,12 @@
+apiVersion: floo-powder.dev/v1alpha1
+kind: Plugin
+metadata:
+  labels:
+    app.kubernetes.io/name: plugin
+    app.kubernetes.io/instance: plugin-sample
+    app.kubernetes.io/part-of: pipeline
+    app.kuberentes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: pipeline
+  name: plugin-sample
+spec:
+  # TODO(user): Add fields here

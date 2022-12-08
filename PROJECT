@@ -3,4 +3,13 @@ layout:
 - go.kubebuilder.io/v3
 projectName: pipeline
 repo: github.com/floo-powder/pipeline
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  domain: dev
+  group: floo-powder
+  kind: Plugin
+  path: github.com/floo-powder/pipeline/api/v1alpha1
+  version: v1alpha1
 version: "3"
