@@ -40,6 +40,10 @@ type PipelineSpec struct {
 	// If it is a periodic task, you need to use crontab expressions.
 	// Manual tasks can be empty.
 	Cron string `json:"cron,omitempty"`
+	// StartAt The start time of the task execution cycle.
+	StartAt *metav1.Time `json:"start_at,omitempty"`
+	// EndAt The end time of the task execution cycle.
+	EndAt *metav1.Time `json:"end_at,omitempty"`
 }
 
 // PipelineStatus defines the observed state of Pipeline

@@ -8,6 +8,32 @@ rules:
 - apiGroups:
   - floo-powder.dev
   resources:
+  - pipelines
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - floo-powder.dev
+  resources:
+  - pipelines/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - floo-powder.dev
+  resources:
+  - pipelines/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - floo-powder.dev
+  resources:
   - sources
   verbs:
   - create
