@@ -22,7 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"github.com/floo-powder/pkg/consts"
+	"github.com/floo-powder/pkg/common"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	"knative.dev/pkg/apis/duck/v1"
 )
@@ -284,7 +284,7 @@ func (in *PluginSpec) DeepCopyInto(out *PluginSpec) {
 	}
 	if in.Config != nil {
 		in, out := &in.Config, &out.Config
-		*out = make([]consts.DatabaseConfigField, len(*in))
+		*out = make([]common.DatabaseConfigField, len(*in))
 		copy(*out, *in)
 	}
 }
