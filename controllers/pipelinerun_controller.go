@@ -47,10 +47,13 @@ type PipelineRunReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.13.0/pkg/reconcile
 func (r *PipelineRunReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	_ = log.FromContext(ctx)
-
-	// TODO(user): your logic here
-
+	logger := log.FromContext(ctx)
+	var obj floopowderv1alpha1.PipelineRun
+	err := r.Get(ctx, client.ObjectKey{req.Namespace, req.Name}, &obj)
+	if err != nil {
+		logger.Error(err, "get request obj failed")
+		return ctrl.Result{}, err
+	}
 	return ctrl.Result{}, nil
 }
 
