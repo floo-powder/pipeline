@@ -28,7 +28,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	floopowderv1alpha1 "github.com/floo-powder/pipeline/api/v1alpha1"
-	"github.com/floo-powder/pkg/consts"
+	"github.com/floo-powder/pkg/common"
 )
 
 // SourceReconciler reconciles a Source object
@@ -72,14 +72,14 @@ func (r *SourceReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		Status: corev1.ConditionFalse,
 	}
 	if err := r.Get(ctx, client.ObjectKey{Name: obj.Spec.Plugin}, &pluginObj); err != nil {
-		condition.Reason = string(consts.NotFound)
+		condition.Reason = string(common.NotFound)
 		condition.Message = "Not Found Plugin"
 		obj.Status.SetConditions(apis.Conditions{condition})
 		err = r.Patch(ctx, &obj, patch)
 		return ctrl.Result{}, err
 	}
 	condition.Reason, condition.Message = obj.Spec.ValidateConfig(pluginObj)
-	if condition.Reason == string(consts.Succeed) {
+	if condition.Reason == string(common.Succeed) {
 		condition.Status = corev1.ConditionTrue
 	}
 	err := r.Patch(ctx, &obj, patch)

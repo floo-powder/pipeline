@@ -17,52 +17,48 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"github.com/floo-powder/pkg/common"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// PluginSpec defines the desired state of Plugin
-type PluginSpec struct {
-	// Kind of plugin(db kind)
-	Kind common.DatabaseKind `json:"kind"`
-	// Version for plugin support
-	Version []string `json:"version"`
-	// Description for plugin
-	Description string `json:"description"`
-	// Image used by plugin to read and write
-	Image string `json:"image"`
-	// Config for Source set
-	Config []common.DatabaseConfigField `json:"config"`
+// PipelineRunSpec defines the desired state of PipelineRun
+type PipelineRunSpec struct {
+	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
+
+	// Foo is an example field of PipelineRun. Edit pipelinerun_types.go to remove/update
+	Foo string `json:"foo,omitempty"`
 }
 
-// PluginStatus defines the observed state of Plugin
-type PluginStatus struct{}
+// PipelineRunStatus defines the observed state of PipelineRun
+type PipelineRunStatus struct {
+	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
+}
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
-//+kubebuilder:resource:scope=Cluster
 
-// Plugin is the Schema for the plugins API
-type Plugin struct {
+// PipelineRun is the Schema for the pipelineruns API
+type PipelineRun struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   PluginSpec   `json:"spec,omitempty"`
-	Status PluginStatus `json:"status,omitempty"`
+	Spec   PipelineRunSpec   `json:"spec,omitempty"`
+	Status PipelineRunStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// PluginList contains a list of Plugin
-type PluginList struct {
+// PipelineRunList contains a list of PipelineRun
+type PipelineRunList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Plugin `json:"items"`
+	Items           []PipelineRun `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&Plugin{}, &PluginList{})
+	SchemeBuilder.Register(&PipelineRun{}, &PipelineRunList{})
 }

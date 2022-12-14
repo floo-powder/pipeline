@@ -17,8 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"github.com/floo-powder/pkg/consts"
-	"github.com/floo-powder/pkg/structs"
+	"github.com/floo-powder/pkg/common"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -28,13 +27,13 @@ import (
 // PipelineSpec defines the desired state of Pipeline
 type PipelineSpec struct {
 	// Reader source reader
-	Reader structs.ActuatorConfig `json:"reader"`
+	Reader common.ActuatorConfig `json:"reader"`
 	// Writer source writer
-	Writer structs.ActuatorConfig `json:"writer"`
+	Writer common.ActuatorConfig `json:"writer"`
 	// SyncType How to synchronize(Full or Increment)
-	SyncType consts.SyncType `json:"sync_type"`
+	SyncType common.SyncType `json:"sync_type"`
 	// ExecuteCycleType when to execute the task
-	ExecuteCycleType consts.ExecuteCycleType `json:"execute_cycle_type"`
+	ExecuteCycleType common.ExecuteCycleType `json:"execute_cycle_type"`
 	// Cron The task execution time.
 	// If it is a one-time task, you need to use the time format of 2006-01-02 15:04:05.
 	// If it is a periodic task, you need to use crontab expressions.

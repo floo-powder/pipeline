@@ -23,7 +23,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	duckv1 "knative.dev/pkg/apis/duck/v1"
 
-	"github.com/floo-powder/pkg/consts"
+	"github.com/floo-powder/pkg/common"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -41,14 +41,14 @@ type SourceSpec struct {
 	Config string `json:"config"`
 }
 
-func (in *SourceSpec) checkValue(value interface{}, kind consts.DatabaseConfigFieldKind) bool {
+func (in *SourceSpec) checkValue(value interface{}, kind common.DatabaseConfigFieldKind) bool {
 	ok := false
 	switch kind {
-	case consts.StringConfig, consts.PasswordConfig:
+	case common.StringConfig, common.PasswordConfig:
 		_, ok = value.(string)
-	case consts.IntConfig:
+	case common.IntConfig:
 		_, ok = value.(int)
-	case consts.BoolConfig:
+	case common.BoolConfig:
 		_, ok = value.(bool)
 	}
 	return ok
@@ -58,7 +58,7 @@ func (in *SourceSpec) checkValue(value interface{}, kind consts.DatabaseConfigFi
 func (in *SourceSpec) ValidateConfig(pluginObj Plugin) (reason string, message string) {
 	var config map[string]interface{}
 	if err := json.Unmarshal([]byte(in.Config), &config); err != nil {
-		reason = string(consts.BadRequest)
+		reason = string(common.BadRequest)
 		message = "Unknown Config Format"
 		return
 	}
@@ -71,7 +71,7 @@ func (in *SourceSpec) ValidateConfig(pluginObj Plugin) (reason string, message s
 			isExist = true
 			ok := in.checkValue(value, fieldConfig.Kind)
 			if !ok {
-				reason = string(consts.BadRequest)
+				reason = string(common.BadRequest)
 				message = fmt.Sprintf(
 					"Wrong parameter value type: %s should be %s",
 					fieldConfig.Name, fieldConfig.Kind,
@@ -80,12 +80,12 @@ func (in *SourceSpec) ValidateConfig(pluginObj Plugin) (reason string, message s
 			}
 		}
 		if !isExist {
-			reason = string(consts.BadRequest)
+			reason = string(common.BadRequest)
 			message = fmt.Sprintf("Missing parameter: %s", fieldConfig.Name)
 			return
 		}
 	}
-	reason = string(consts.Succeed)
+	reason = string(common.Succeed)
 	return
 }
 

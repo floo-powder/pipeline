@@ -3,7 +3,7 @@ module github.com/floo-powder/pipeline
 go 1.19
 
 require (
-	github.com/floo-powder/pkg v0.0.0-20221208055052-fc4fbe067492
+	github.com/floo-powder/pkg v0.0.0-20221214053831-0dcec23cbe68
 	github.com/onsi/ginkgo/v2 v2.1.6
 	github.com/onsi/gomega v1.20.1
 	k8s.io/api v0.25.4
